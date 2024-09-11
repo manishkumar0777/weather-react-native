@@ -3,13 +3,16 @@ import React from 'react'
 
 //axios to fetch api
 import axios from 'axios'
+import Config from 'react-native-config';
 
-//apikey
-import { apiKey } from '../constants'
+import { API_KEY } from '@env';
+
+//env
+const apiKey = API_KEY;
 
 //Endpoints
-const forecastEndpoint = params => `https://api.weatherapi.com/v1/forecast.json?key=0bddc3004db8434585f53321240709&q=${params.cityName}&days=${params.days}&aqi=no&alerts=no`;
-const locationEndpoint = params => `https://api.weatherapi.com/v1/search.json?key=0bddc3004db8434585f53321240709&q=${params.cityName}`;
+const forecastEndpoint = params => `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${params.cityName}&days=${params.days}&aqi=no&alerts=no`;
+const locationEndpoint = params => `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${params.cityName}`;
 
 //calling api with try catch 
 const apiCall = async(endpoint) => {
